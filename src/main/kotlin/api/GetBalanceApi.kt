@@ -30,7 +30,6 @@ class GetBalanceApi(router: Router, private val bankAccounts: BankAccounts) : Ha
 
         bankAccounts.getBalance(uuid)
             .onSuccess {
-                println(JsonObject().put("balance", it).toBuffer()) // todo remove
                 context.response().putHeader(HttpHeaderNames.CONTENT_TYPE, HttpHeaderValues.APPLICATION_JSON)
                     .end(JsonObject().put("balance", it).toBuffer())
             }
