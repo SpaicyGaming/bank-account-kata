@@ -18,6 +18,9 @@ import org.testcontainers.containers.PostgreSQLContainer
 import java.time.ZoneId
 import java.util.*
 
+/**
+ * This class is responsible for interacting with the Postgres database for testing purposes.
+ */
 @ExtendWith(VertxExtension::class)
 open class PostgresTest {
 

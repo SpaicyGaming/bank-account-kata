@@ -11,6 +11,15 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 import java.util.*
 
+/**
+ * This class is responsible for handling POST requests to the /api/deposit endpoint.
+ * It will deposit the given amount into the given UUID's account.
+ * It expects a JSON body with the following format:
+ * {
+ *  "amount": 100.00,
+ *  "uuid": "00000000-0000-0000-0000-000000000000"
+ *  }
+ */
 class PostDepositApi(router: Router, private val bankAccounts: BankAccounts) : Handler<RoutingContext> {
 
     init {

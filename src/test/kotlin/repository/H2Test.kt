@@ -13,6 +13,9 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.extension.ExtendWith
 
+/**
+ * This class is responsible for interacting with the H2 database for testing purposes.
+ */
 @ExtendWith(VertxExtension::class)
 open class H2Test {
 

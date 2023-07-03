@@ -13,6 +13,10 @@ import repository.BankAccounts
 import java.util.*
 
 
+/**
+ * This class is responsible for handling GET requests to the /api/history/:uuid endpoint.
+ * It will return a JSON array of all the transactions for the given UUID.
+ */
 class GetHistoryApi(router: Router, private val bankAccounts: BankAccounts) : Handler<RoutingContext> {
 
     init {

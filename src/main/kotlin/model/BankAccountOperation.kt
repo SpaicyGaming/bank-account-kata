@@ -5,6 +5,9 @@ import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.util.*
 
+/**
+ * This class represents a bank account operation.
+ */
 data class BankAccountOperation(
     val id: UUID,
     val operation: Operation,
@@ -13,6 +16,9 @@ data class BankAccountOperation(
 ) {
 
     companion object {
+        /**
+         * This method creates a [BankAccountOperation] from a [Row].
+         */
         @JvmStatic
         fun fromRow(row: Row): BankAccountOperation {
             val isUpperCase = row.getColumnIndex("ID") > -1
@@ -36,6 +42,9 @@ data class BankAccountOperation(
         }
     }
 
+    /**
+     * This enum represents the type of operation.
+     */
     enum class Operation {
         DEPOSIT,
         WITHDRAWAL;

@@ -7,6 +7,9 @@ import io.vertx.sqlclient.SqlClient
 
 object DBManager {
 
+    /**
+     * This method creates the [JsonObject] configuration for the connection to the H2 in memory database.
+     */
     fun h2ConnectOptions(): JsonObject = h2ConnectOptions(
         JsonObject()
             .put("url", "jdbc:h2:mem:bank;DB_CLOSE_DELAY=-1")
@@ -16,6 +19,9 @@ object DBManager {
             .put("max_pool_size", 16)
     )
 
+    /**
+     * This method creates the [JsonObject] configuration for the connection to the database.
+     */
     fun h2ConnectOptions(config: JsonObject): JsonObject = JsonObject()
         .put("url", config.getString("url"))
         .put("jdbcUrl", config.getString("jdbcUrl"))
@@ -23,6 +29,9 @@ object DBManager {
         .put("password", config.getString("password"))
         .put("max_pool_size", config.getInteger("max_pool_size"))
 
+    /**
+     * This method creates the [PgConnectOptions] from the configuration.
+     */
     fun pgConnectOptions(config: JsonObject): PgConnectOptions = PgConnectOptions()
         .setHost(config.getString("host"))
         .setPort(config.getInteger("port"))
@@ -30,6 +39,9 @@ object DBManager {
         .setUser(config.getString("username"))
         .setPassword(config.getString("password"))
 
+    /**
+     * This method creates the database tables.
+     */
     @JvmStatic
     fun createTables(sqlClient: SqlClient): Future<RowSet<Row>>? {
         val accountsTableCreationQuery = """

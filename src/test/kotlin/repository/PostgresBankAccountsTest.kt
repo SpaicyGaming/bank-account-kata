@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test
 import java.math.BigDecimal
 import java.util.*
 
+/**
+ * This class is responsible for testing the [PostgresBankAccounts] class.
+ */
 open class PostgresBankAccountsTest : PostgresTest() {
 
     private lateinit var bankAccounts: BankAccounts

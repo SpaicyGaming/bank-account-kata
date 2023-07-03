@@ -9,6 +9,9 @@ import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.util.*
 
+/**
+ * This class is responsible for managing bank accounts.
+ */
 sealed interface BankAccounts {
 
     companion object {
@@ -19,25 +22,42 @@ sealed interface BankAccounts {
         fun fromToPostgres(sqlClient: SqlClient): BankAccounts = PostgresBankAccounts(sqlClient)
     }
 
+    /**
+     * Deposit [amount] in [bankAccountId] at [insertedAt].
+     */
     fun deposit(
         bankAccountId: UUID,
         amount: BigDecimal,
         insertedAt: LocalDateTime = LocalDateTime.now()
     ): Future<BankAccountOperation>
 
+    /**
+     * Withdraw [amount] from [bankAccountId] at [insertedAt].
+     * If the amount is greater than the balance, the operation will fail.
+     */
     fun withdraw(
         bankAccountId: UUID,
         amount: BigDecimal,
         insertedAt: LocalDateTime = LocalDateTime.now()
     ): Future<BankAccountOperation?>
 
+    /**
+     * Get the history of operations for [bankAccountId].
+     * The operations are ordered by [BankAccountOperation.time] in descending order.
+     * The first operation is the most recent one.
+     */
     fun history(bankAccountId: UUID): Future<List<BankAccountOperation>>
 
+    /**
+     * Get the balance of [bankAccountId].
+     */
     fun getBalance(bankAccountId: UUID): Future<BigDecimal>
 
 }
 
-
+/**
+ * This class is responsible for managing bank accounts in H2.
+ */
 private class H2BankAccounts(private val sqlClient: SqlClient) : BankAccounts {
 
     override fun deposit(
@@ -99,6 +119,9 @@ private class H2BankAccounts(private val sqlClient: SqlClient) : BankAccounts {
     }
 }
 
+/**
+ * This class is responsible for managing bank accounts in Postgres.
+ */
 private class PostgresBankAccounts(private val sqlClient: SqlClient) : BankAccounts {
 
     override fun deposit(

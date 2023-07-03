@@ -22,6 +22,9 @@ import repository.BankAccounts
 import java.time.LocalDateTime
 import java.util.*
 
+/**
+ * This class is responsible for testing the [GetHistoryApi] class.
+ */
 @ExtendWith(VertxExtension::class, JsonModules::class)
 class GetHistoryApiTest {
 

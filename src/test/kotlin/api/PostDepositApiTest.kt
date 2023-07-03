@@ -20,6 +20,9 @@ import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.util.*
 
+/**
+ * This class is responsible for testing the [PostDepositApi] class.
+ */
 @ExtendWith(VertxExtension::class)
 class PostDepositApiTest {
 

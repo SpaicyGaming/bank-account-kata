@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test
 import java.math.BigDecimal
 import java.util.*
 
+/**
+ * This class is responsible for testing the [H2BankAccounts] class.
+ */
 class H2BankAccountsTest : H2Test() {
 
     private lateinit var bankAccounts: BankAccounts

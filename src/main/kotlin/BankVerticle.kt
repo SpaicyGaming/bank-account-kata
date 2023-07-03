@@ -12,6 +12,10 @@ import json.JsonModules
 import repository.BankAccounts
 
 
+/**
+ * This class is responsible for starting the verticle.
+ * It will create the database tables and deploy the HTTP server.
+ */
 class BankVerticle : AbstractVerticle() {
 
     override fun start(start: Promise<Void>) {
