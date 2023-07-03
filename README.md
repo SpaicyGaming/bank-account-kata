@@ -71,5 +71,17 @@ response:
   "amount" : 100,
   "time" : [ 2023, 7, 3, 15, 36, 59, 881894170 ]
 } ]
+```
 
+#### Account balance
+
+Gets the current balance of an account.
+
+```
+GET /api/balance/:uuid
+
+response:
+{
+  "balance": 150.00
+}
 ```

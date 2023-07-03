@@ -1,3 +1,4 @@
+import api.GetBalanceApi
 import api.GetHistoryApi
 import api.PostDepositApi
 import api.PostWithdrawApi
@@ -35,6 +36,7 @@ class BankVerticle : AbstractVerticle() {
         val bankAccounts = BankAccounts.fromToH2(sqlClient)
 
         val router = Router.router(vertx)
+        GetBalanceApi(router, bankAccounts)
         GetHistoryApi(router, bankAccounts)
         PostDepositApi(router, bankAccounts)
         PostWithdrawApi(router, bankAccounts)
